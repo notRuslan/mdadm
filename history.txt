@@ -1,0 +1,37 @@
+    1  cat /proc/mdstat
+    2  mdadm -D /dev/md0
+    3  mdadm /dev/md0 --fail /dev/sdc
+    4  mdadm -D /dev/md0
+    5  cat /proc/mdstat
+    6  mdadm /dev/md0 --remove /dev/sdc
+    7  cat /proc/mdstat
+    8  mdadm -D /dev/md0
+    9  mdadm /dev/md0 -add /dev/sdc
+   10  mdadm /dev/md0 --add /dev/sdc
+   11  cat /proc/mdstat
+   12  mdadm -D /dev/md0
+   13  history
+   14  history > ~history.txt
+
+# lsblk :
+NAME            MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+sda               8:0    0   80G  0 disk
+├─sda1            8:1    0    1G  0 part  /boot
+└─sda2            8:2    0   79G  0 part
+  ├─centos-root 253:0    0   50G  0 lvm   /
+  ├─centos-swap 253:1    0    1G  0 lvm   [SWAP]
+  └─centos-home 253:2    0   28G  0 lvm   /home
+sdb               8:16   0  250M  0 disk
+└─md0             9:0    0  249M  0 raid1
+  ├─md0p1       259:0    0   49M  0 md    /raid/part1
+  ├─md0p2       259:1    0   50M  0 md    /raid/part2
+  ├─md0p3       259:2    0   49M  0 md    /raid/part3
+  ├─md0p4       259:3    0   50M  0 md    /raid/part4
+  └─md0p5       259:4    0   49M  0 md    /raid/part5
+sdc               8:32   0  250M  0 disk
+└─md0             9:0    0  249M  0 raid1
+  ├─md0p1       259:0    0   49M  0 md    /raid/part1
+  ├─md0p2       259:1    0   50M  0 md    /raid/part2
+  ├─md0p3       259:2    0   49M  0 md    /raid/part3
+  ├─md0p4       259:3    0   50M  0 md    /raid/part4
+  └─md0p5       259:4    0   49M  0 md    /raid/part5
